@@ -10,17 +10,28 @@ const app = express();
 
 
 
-// définition des middlewares
+// Middlewares definition 
 function logRequest1(req, res, next) {
 	console.log("Middleware#1", " - Method ", req.method, " - URL ", req.url);
+
 	next();
-}
+};
+
+function logRequest2(req, res, next) {
+	console.log("Middleware#2", " - Method ", req.method, " - URL ", req.url);
+
+	next();
+};
 
 
 /* Execution depends on the order of app.use */
 
-// calling middlewares
+/* calling middlewares */
+
 // Middlewares are directly passed like callback functions 
+app.use(logRequest1); 
+app.use(logRequest2); 
+app.use(logRequest2); 
 app.use(logRequest1); 
 
 
