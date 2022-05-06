@@ -9,7 +9,11 @@ const express = require('express');
 const app = express(); 
 
 
-app.use(express.urlencoded);
+// this is deprecated 
+// app.use(express.urlencoded);
+
+// this is the new way 
+app.use(express.urlencoded({extended:true}));
 
 app.post('/', (req, res) => {
 
@@ -29,8 +33,15 @@ app.post('/', (req, res) => {
 
     Response
 
-        body-parser deprecated undefined extended: 
-        provide extended option ../node_modules/express/lib/router/layer.js:95:5
+        {
+            "hello": "World",
+            "valeur": "2"
+        }
+
+        {
+            "name": "John",
+            "age": "25"
+        }
 */
 
 
